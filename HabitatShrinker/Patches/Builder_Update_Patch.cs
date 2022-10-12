@@ -4,10 +4,14 @@ using UnityEngine;
 
 namespace HabitatShrinker.Patches
 {
+    /// <summary>
+    /// Updates the scale when building, changing the ghost scale, the "being built" scale, and the final fully-constructed scale
+    /// </summary>
     [HarmonyPatch(typeof(Builder), nameof(Builder.Update))]
     internal class Builder_Update_Patch
     {
-        private static readonly Dictionary<TechType, TechCategory> _techTypeCategoryCache = new Dictionary<TechType, TechCategory>();
+        private static readonly Dictionary<TechType, TechCategory> _techTypeCategoryCache =
+            new Dictionary<TechType, TechCategory>();
 
         private static bool ShouldScaleTechType(TechType techType)
         {
@@ -18,7 +22,7 @@ namespace HabitatShrinker.Patches
                 _techTypeCategoryCache[techType] = category;
             }
 
-            switch(category)
+            switch (category)
             {
                 case TechCategory.InteriorPiece:
                 case TechCategory.BasePiece:
