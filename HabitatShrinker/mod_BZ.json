@@ -1,0 +1,10 @@
+{
+  "Game": "BelowZero",
+  "Id": "HabitatShrinker_BZ",
+  "DisplayName": "Habitat Shrinker",
+  "Author": "Chalkos",
+  "Version": "1.0.0",
+  "Requires": [ "SMLHelper" ],
+  "Enable": true,
+  "AssemblyName": "HabitatShrinker.dll"
+}
