@@ -1,5 +1,5 @@
 {
-  "Game": "BelowZero",
+  "Game": "Subnautica",
   "Id": "HabitatShrinker",
   "DisplayName": "Habitat Shrinker",
   "Author": "Chalkos",
@@ -8,6 +8,6 @@
   "Enable": true,
   "AssemblyName": "HabitatShrinker.dll",
   "VersionChecker": {
-    "LatestVersionURL": "https://raw.githubusercontent.com/chalkos/Chalkos-Subnautica-Mods/main/HabitatShrinker/mod_BZ.json"
+    "LatestVersionURL": "https://raw.githubusercontent.com/chalkos/Chalkos-Subnautica-Mods/main/HabitatShrinker/mod_SN1.json"
   }
 }

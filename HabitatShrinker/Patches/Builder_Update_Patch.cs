@@ -33,13 +33,18 @@ namespace HabitatShrinker.Patches
         }
 
         [HarmonyPrefix]
-        public static void Builder_Update_Prefix(ref Vector3 ___ghostModelScale, ref GameObject ___prefab)
+        public static void Builder_Update_Prefix()
         {
-            if (___prefab == null || !ShouldScaleTechType(Builder.lastTechType)) return;
+#if SN1
+            if (Builder.prefab == null || !ShouldScaleTechType(Builder.constructableTechType)) return;
+#elif BZ
+            if (Builder.prefab == null || !ShouldScaleTechType(Builder.lastTechType)) return;
+#endif
+
 
             var scale = Main.Enabled ? Main.ScaleVector : Vector3.one;
-            ___ghostModelScale = scale;
-            ___prefab.transform.localScale = scale;
+            Builder.ghostModelScale = scale;
+            Builder.prefab.transform.localScale = scale;
         }
     }
 }

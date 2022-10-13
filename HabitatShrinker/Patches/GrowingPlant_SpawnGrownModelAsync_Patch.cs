@@ -10,31 +10,9 @@ using Logger = QModManager.Utility.Logger;
 namespace HabitatShrinker.Patches
 {
     /// <summary>
-    /// grown plants' scale gets adjusted when they grow, in order to show them at normal size independently of the parent scale
-    /// so they need to be scaled down to 1 and just follow the parent
+    /// growing plants get adjusted according to the planter's scale, but when they grow the scale gets re-calculated
+    /// and becomes independent of the planter. This just factors in the planter's scale when calculating the grown plant's scale
     /// </summary>
-    [HarmonyPatch(typeof(GrowingPlant), "SpawnGrownModelAsync")]
-    public class GrowingPlant_SpawnGrownModelAsync_Patch
-    {
-        static void Postfix(ref GrowingPlant __instance, ref bool ___isIndoor,
-            ref AnimationCurve ___growthWidthIndoor,
-            ref AnimationCurve ___growthHeightIndoor,
-            ref AnimationCurve ___growthWidth,
-            ref AnimationCurve ___growthHeight)
-        {
-            // Logger.Log(Logger.Level.Info, $"spawn transform", null, true);
-            //
-            // float progress = 1f;
-            // float num = ___isIndoor ? ___growthWidthIndoor.Evaluate(progress) : ___growthWidth.Evaluate(progress);
-            // float y = ___isIndoor ? ___growthHeightIndoor.Evaluate(progress) : ___growthHeight.Evaluate(progress);
-            //
-            // for (int i = 0; i < __instance.seed.currentPlanter.grownPlantsRoot.childCount; i++)
-            // {
-            //     __instance.seed.currentPlanter.grownPlantsRoot.GetChild(i).localScale = new Vector3(1, 1, 1);
-            // }
-        }
-    }
-
     [HarmonyPatch(typeof(GrowingPlant), nameof(GrowingPlant.SetScale))]
     internal class GrowingPlant_SetScale_Patch
     {

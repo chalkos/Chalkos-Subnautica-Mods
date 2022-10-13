@@ -5,9 +5,12 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		BZ|Any CPU = BZ|Any CPU
+		SN1|Any CPU = SN1|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C776A2E6-FDBD-4383-9F8D-FD43D54516D3}.BZ|Any CPU.ActiveCfg = BZ|Any CPU
 		{C776A2E6-FDBD-4383-9F8D-FD43D54516D3}.BZ|Any CPU.Build.0 = BZ|Any CPU
+		{C776A2E6-FDBD-4383-9F8D-FD43D54516D3}.SN1|Any CPU.ActiveCfg = SN1|Any CPU
+		{C776A2E6-FDBD-4383-9F8D-FD43D54516D3}.SN1|Any CPU.Build.0 = SN1|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -28,9 +28,7 @@ namespace HabitatShrinker.Patches
             bool builderModuleCheck = TechTypeHandler.TryGetModdedTechType("BuilderModule", out TechType modTechType) &&
                                       module != null && module.GetTechType() == modTechType;
 
-            // TODO: for when/if using nstrip
-            //if (DevConsole.instance != null && !DevConsole.instance.state && (builderCheck || builderModuleCheck))
-            if (builderCheck || builderModuleCheck)
+            if (DevConsole.instance != null && !DevConsole.instance.state && (builderCheck || builderModuleCheck))
             {
                 bool isToggleKeyDown = Input.GetKeyDown(Main.Config.ToggleKey);
                 if (!_wasToggleKeyDown && isToggleKeyDown)
