@@ -62,8 +62,15 @@ namespace HabitatShrinker.Patches
 
         public static void AdjustGrownPlantScale(GrowingPlant instance, Transform tr, float progress)
         {
-            if (progress != 1f) // while growing, the scale is fine
+            // while growing, the scale is fine as it it 
+            if (progress != 1f)
                 return;
+
+            // when loading a save, all grown plants pass through here without having a planter,
+            // but their scale is already correct so it can be skipped
+            if (instance.seed.currentPlanter == null)
+                return;
+
             var planterScale = instance.seed.currentPlanter.transform.localScale;
             tr.localScale = Vector3.Scale(tr.localScale, planterScale);
         }
