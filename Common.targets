@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <!--===========================-->
+    <!--      Common metadata      -->
+    <!--===========================-->
+    <PropertyGroup>
+        <Authors>Chalkos</Authors>
+    </PropertyGroup>
+
+    <!--=================================-->
+    <!--      Common build settings      -->
+    <!--=================================-->
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <RootNamespace>$(MSBuildProjectName)</RootNamespace>
+        <AssemblyName>$(MSBuildProjectName)</AssemblyName>
+        <Configurations>SN1;BZ</Configurations>
+        <Platforms>AnyCPU</Platforms>
+        <TargetFramework>net472</TargetFramework>
+        <FileAlignment>512</FileAlignment>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Optimize>true</Optimize>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <LangVersion>latest</LangVersion>
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <ErrorReport>prompt</ErrorReport>
+        <Prefer32Bit>false</Prefer32Bit>
+    </PropertyGroup>
+
+    <!--==============================-->
+    <!--      Directory settings      -->
+    <!--        (change these)        -->
+    <!--==============================-->
+    <PropertyGroup>
+        <CommonDir>D:\Program Files\SteamLibrary\steamapps\common\</CommonDir>
+        <PublicizedFolder>publicized_assemblies\</PublicizedFolder>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)' == 'SN1'">
+        <DefineConstants>SN1</DefineConstants>
+        <GameDir>$(CommonDir)Subnautica</GameDir>
+        <DataFolder>Subnautica_Data</DataFolder>
+        <SMLHelperFolder>Modding Helper</SMLHelperFolder>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)' == 'BZ'">
+        <DefineConstants>BZ</DefineConstants>
+        <GameDir>$(CommonDir)SubnauticaZero</GameDir>
+        <DataFolder>SubnauticaZero_Data</DataFolder>
+        <SMLHelperFolder>SMLHelper_BZ</SMLHelperFolder>
+    </PropertyGroup>
+
+    <!--==============================-->
+    <!--      Copy to QModFolder      -->
+    <!--      Create zip              -->
+    <!--==============================-->
+    <ItemGroup>
+        <PackageReference Include="7-Zip.CommandLine" Version="18.1.0" GeneratePathProperty="true"/>
+    </ItemGroup>
+    <PropertyGroup>
+        <PBE_SrcDll>$(MSBuildProjectDirectory)\bin\$(Configuration)\$(AssemblyName).dll</PBE_SrcDll>
+        <PBE_SrcJson>$(MSBuildProjectDirectory)\mod_$(Configuration).json</PBE_SrcJson>
+        <PBE_DestQMods>$(GameDir)\QMods\$(MSBuildProjectName)</PBE_DestQMods>
+        <PBE_Zip>$(MSBuildProjectDirectory)\bin\zip\$(AssemblyName)\$(AssemblyName)_$(Configuration)_v$(Version).zip</PBE_Zip>
+        <PBE_ZipSrc>$(MSBuildProjectDirectory)\bin\zip\$(AssemblyName)\$(AssemblyName)</PBE_ZipSrc>
+        <PBE_nul> > nul</PBE_nul>
+        <PostBuildEvent>
+            xcopy "$(PBE_SrcDll)" "$(PBE_DestQMods)\" /q /y $(PBE_nul)
+            copy "$(PBE_SrcJson)" "$(PBE_DestQMods)\mod.json" /y $(PBE_nul)
+
+            IF EXIST "$(PBE_ZipSrc)" rmdir "$(PBE_ZipSrc)" /q /s $(PBE_nul)
+            mkdir "$(PBE_ZipSrc)\" $(PBE_nul)
+            xcopy "$(PBE_SrcDll)" "$(PBE_ZipSrc)\" /q /y $(PBE_nul)
+            copy "$(PBE_SrcJson)" "$(PBE_ZipSrc)\mod.json" /y $(PBE_nul)
+
+            IF EXIST "$(PBE_Zip)" DEL /F "$(PBE_Zip)" $(PBE_nul)
+            $(Pkg7-Zip_CommandLine)\tools\7za.exe a "$(PBE_Zip)" "$(PBE_ZipSrc)" $(PBE_nul)
+        </PostBuildEvent>
+    </PropertyGroup>
+
+    <!--===============================-->
+    <!--      Global Dependencies      -->
+    <!--===============================-->
+    <ItemGroup>
+        <Reference Include="0Harmony">
+            <HintPath>$(GameDir)\BepInEx\core\0Harmony.dll</HintPath>
+        </Reference>
+        <Reference Include="Assembly-CSharp">
+            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)Assembly-CSharp.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="Assembly-CSharp-firstpass">
+            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)Assembly-CSharp-firstpass.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="QModInstaller">
+            <HintPath>$(GameDir)\BepInEx\plugins\QModManager\QModInstaller.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="SMLHelper">
+            <HintPath>$(GameDir)\QMods\$(SMLHelperFolder)\SMLHelper.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.CoreModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.InputLegacyModule">
+            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.InputLegacyModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UI">
+            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.UI.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="Unity.TextMeshPro" Condition="$(Configuration.Contains('BZ'))">
+            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)Unity.TextMeshPro.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+    </ItemGroup>
+
+    <!--============================-->
+    <!--      Dependencies: BZ      -->
+    <!--============================-->
+    <ItemGroup Condition="$(Configuration.Contains('BZ'))">
+        <Reference Include="Unity.TextMeshPro">
+            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)Unity.TextMeshPro.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+    </ItemGroup>
+
+</Project>

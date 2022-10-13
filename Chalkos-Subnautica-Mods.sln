@@ -2,15 +2,21 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HabitatShrinker", "HabitatShrinker\HabitatShrinker.csproj", "{C776A2E6-FDBD-4383-9F8D-FD43D54516D3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{329CDBC5-DA48-4799-8388-1BBD29AC0F4E}"
+	ProjectSection(SolutionItems) = preProject
+		Common.targets = Common.targets
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		BZ|Any CPU = BZ|Any CPU
-		SN1|Any CPU = SN1|Any CPU
+		SN1|AnyCPU = SN1|AnyCPU
+		BZ|AnyCPU = BZ|AnyCPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C776A2E6-FDBD-4383-9F8D-FD43D54516D3}.BZ|Any CPU.ActiveCfg = BZ|Any CPU
-		{C776A2E6-FDBD-4383-9F8D-FD43D54516D3}.BZ|Any CPU.Build.0 = BZ|Any CPU
-		{C776A2E6-FDBD-4383-9F8D-FD43D54516D3}.SN1|Any CPU.ActiveCfg = SN1|Any CPU
-		{C776A2E6-FDBD-4383-9F8D-FD43D54516D3}.SN1|Any CPU.Build.0 = SN1|Any CPU
+		{C776A2E6-FDBD-4383-9F8D-FD43D54516D3}.SN1|AnyCPU.ActiveCfg = SN1|AnyCPU
+		{C776A2E6-FDBD-4383-9F8D-FD43D54516D3}.SN1|AnyCPU.Build.0 = SN1|AnyCPU
+		{C776A2E6-FDBD-4383-9F8D-FD43D54516D3}.BZ|AnyCPU.ActiveCfg = BZ|AnyCPU
+		{C776A2E6-FDBD-4383-9F8D-FD43D54516D3}.BZ|AnyCPU.Build.0 = BZ|AnyCPU
 	EndGlobalSection
 EndGlobal

@@ -1,93 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <OutputType>Library</OutputType>
-        <Authors>Chalkos</Authors>
         <Version>1.0.0</Version>
         <Title>Habitat Shrinker</Title>
     </PropertyGroup>
 
-    <PropertyGroup>
-        <RootNamespace>$(MSBuildProjectName)</RootNamespace>
-        <AssemblyName>$(MSBuildProjectName)</AssemblyName>
-        <Configurations>SN1;BZ</Configurations>
-        <Platforms>AnyCPU</Platforms>
-        <TargetFramework>net472</TargetFramework>
-        <FileAlignment>512</FileAlignment>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <Optimize>true</Optimize>
-        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-        <LangVersion>latest</LangVersion>
-    </PropertyGroup>
-    
-    <PropertyGroup>
-        <CommonDir>D:\Program Files\SteamLibrary\steamapps\common\</CommonDir>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)' == 'SN1'">
-        <DefineConstants>SN1</DefineConstants>
-        <GameDir>$(CommonDir)Subnautica</GameDir>
-        <DataFolder>Subnautica_Data</DataFolder>
-        <SMLHelperFolder>Modding Helper</SMLHelperFolder>
-        <PublicizedFolder>publicized_assemblies\</PublicizedFolder>
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <ErrorReport>prompt</ErrorReport>
-        <Prefer32Bit>false</Prefer32Bit>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)' == 'BZ'">
-        <DefineConstants>BZ</DefineConstants>
-        <GameDir>$(CommonDir)SubnauticaZero</GameDir>
-        <DataFolder>SubnauticaZero_Data</DataFolder>
-        <SMLHelperFolder>SMLHelper_BZ</SMLHelperFolder>
-        <PublicizedFolder>publicized_assemblies\</PublicizedFolder>
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <ErrorReport>prompt</ErrorReport>
-        <Prefer32Bit>false</Prefer32Bit>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <PostBuildEvent>xcopy "$(MSBuildProjectDirectory)\bin\$(Configuration)\$(AssemblyName).dll" "$(GameDir)\QMods\$(MSBuildProjectName)\" /q /y
-            copy "$(MSBuildProjectDirectory)\mod_$(Configuration).json" "$(GameDir)\QMods\$(MSBuildProjectName)\mod.json" /y
-        </PostBuildEvent>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <Reference Include="0Harmony">
-            <HintPath>$(GameDir)\BepInEx\core\0Harmony.dll</HintPath>
-        </Reference>
-        <Reference Include="Assembly-CSharp">
-            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)Assembly-CSharp.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="Assembly-CSharp-firstpass">
-            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)Assembly-CSharp-firstpass.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="QModInstaller">
-            <HintPath>$(GameDir)\BepInEx\plugins\QModManager\QModInstaller.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="SMLHelper">
-            <HintPath>$(GameDir)\QMods\$(SMLHelperFolder)\SMLHelper.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="UnityEngine.CoreModule">
-            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.CoreModule.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="UnityEngine.InputLegacyModule">
-            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.InputLegacyModule.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UI">
-            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.UI.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="Unity.TextMeshPro" Condition="$(Configuration.Contains('BZ'))">
-            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)Unity.TextMeshPro.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-    </ItemGroup>
-
+    <Import Project="$(SolutionDir)\Common.targets" />
 </Project>
