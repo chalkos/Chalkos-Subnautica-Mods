@@ -32,19 +32,25 @@ namespace HabitatShrinker.Patches
             }
         }
 
-        [HarmonyPrefix]
-        public static void Builder_Update_Prefix()
-        {
+        private static TechType GetLastTechType =>
 #if SN1
-            if (Builder.prefab == null || !ShouldScaleTechType(Builder.constructableTechType)) return;
+            Builder.constructableTechType;
 #elif BZ
-            if (Builder.prefab == null || !ShouldScaleTechType(Builder.lastTechType)) return;
+            Builder.lastTechType;
 #endif
 
+        public static void Prefix()
+        {
+            if (Builder.prefab == null || !ShouldScaleTechType(GetLastTechType)) return;
 
             var scale = Main.Enabled ? Main.ScaleVector : Vector3.one;
-            Builder.ghostModelScale = scale;
-            Builder.prefab.transform.localScale = scale;
+
+            if (Builder.prefab.transform.localScale != scale)
+            {
+                Builder.prefab.transform.localScale = scale;
+                Object.Destroy((Object)Builder.ghostModel);
+                Builder.Update();
+            }
         }
     }
 }

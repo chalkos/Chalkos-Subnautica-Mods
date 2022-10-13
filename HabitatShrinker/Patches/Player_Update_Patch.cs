@@ -1,12 +1,14 @@
-﻿using HarmonyLib;
+﻿using System.Collections;
+using HarmonyLib;
 using SMLHelper.V2.Handlers;
 using UnityEngine;
+using UWE;
 using Logger = QModManager.Utility.Logger;
 
 namespace HabitatShrinker.Patches
 {
     /// <summary>
-    /// Used to monitor keypress and toggle the scaling functionality on/off.
+    /// Used to monitor keypress to toggle the scaling functionality on/off.
     /// It can only be turned on with the builder tool in hand, and will turn off afterwards (like Building tweaks).
     /// 
     /// Compatibility:
@@ -16,6 +18,8 @@ namespace HabitatShrinker.Patches
     public class Player_Update_Patch
     {
         private static bool _wasToggleKeyDown = false;
+
+        private static string _currentMessage = null;
 
         [HarmonyPostfix]
         public static void Postfix(Player __instance)
@@ -33,21 +37,44 @@ namespace HabitatShrinker.Patches
                 bool isToggleKeyDown = Input.GetKeyDown(Main.Config.ToggleKey);
                 if (!_wasToggleKeyDown && isToggleKeyDown)
                 {
+                    ProcessMessage(_currentMessage, false);
                     Main.Enabled = !Main.Enabled;
-
-                    if (Main.Enabled)
-                        Logger.Log(Logger.Level.Info,
-                            $"Size modifier enabled. X:{Main.Config.ScaleX:F2} Y:{Main.Config.ScaleY:F2} Z:{Main.Config.ScaleZ:F2}",
-                            null, true);
-                    else
-                        Logger.Log(Logger.Level.Info, "Size modifier disabled.", null, true);
+                    _currentMessage = Main.Enabled
+                        ? $"Size modifier enabled. X:{Main.Config.ScaleX:F2} Y:{Main.Config.ScaleY:F2} Z:{Main.Config.ScaleZ:F2}"
+                        : "Size modifier disabled";
+                    ProcessMessage(_currentMessage, true);
                 }
 
                 _wasToggleKeyDown = isToggleKeyDown;
             }
-            else
+            else if(Main.Enabled)
             {
+                ProcessMessage(_currentMessage, false);
                 Main.Enabled = false;
+            }
+        }
+
+        private static void ProcessMessage(string msg, bool active)
+        {
+            if (msg == null) return;
+            var message = ErrorMessage.main.GetExistingMessage(msg);
+            if (active)
+            {
+                if (message != null)
+                {
+                    message.messageText = msg;
+                    message.entry.text = msg;
+                    if (message.timeEnd <= Time.time + 1f)
+                        message.timeEnd += Time.deltaTime;
+                }
+                else
+                {
+                    ErrorMessage.AddMessage(msg);
+                }
+            }
+            else if (message != null && message.timeEnd > Time.time)
+            {
+                message.timeEnd = Time.time;
             }
         }
     }

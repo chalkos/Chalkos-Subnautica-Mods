@@ -4,7 +4,7 @@
   "DisplayName": "Habitat Shrinker",
   "Author": "Chalkos",
   "Version": "1.0.0",
-  "Requires": [ "SMLHelper" ],
+  "Requires": [ "SMLHelper", "BuildingTweaks", "VersionChecker" ],
   "Enable": true,
   "AssemblyName": "HabitatShrinker.dll",
   "VersionChecker": {
