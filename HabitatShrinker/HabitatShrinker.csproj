@@ -5,18 +5,19 @@
         <Authors>Chalkos</Authors>
         <Version>1.0.0</Version>
         <Title>Habitat Shrinker</Title>
+    </PropertyGroup>
+
+    <PropertyGroup>
         <RootNamespace>$(MSBuildProjectName)</RootNamespace>
         <AssemblyName>$(MSBuildProjectName)</AssemblyName>
         <Configurations>SN1;BZ</Configurations>
         <Platforms>AnyCPU</Platforms>
-    </PropertyGroup>
-
-    <PropertyGroup>
         <TargetFramework>net472</TargetFramework>
         <FileAlignment>512</FileAlignment>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <Optimize>true</Optimize>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
     
     <PropertyGroup>
@@ -30,7 +31,6 @@
         <SMLHelperFolder>Modding Helper</SMLHelperFolder>
         <PublicizedFolder>publicized_assemblies\</PublicizedFolder>
         <PlatformTarget>AnyCPU</PlatformTarget>
-        <LangVersion>7.1</LangVersion>
         <ErrorReport>prompt</ErrorReport>
         <Prefer32Bit>false</Prefer32Bit>
     </PropertyGroup>
@@ -42,7 +42,6 @@
         <SMLHelperFolder>SMLHelper_BZ</SMLHelperFolder>
         <PublicizedFolder>publicized_assemblies\</PublicizedFolder>
         <PlatformTarget>AnyCPU</PlatformTarget>
-        <LangVersion>7.1</LangVersion>
         <ErrorReport>prompt</ErrorReport>
         <Prefer32Bit>false</Prefer32Bit>
     </PropertyGroup>
@@ -57,19 +56,12 @@
         <Reference Include="0Harmony">
             <HintPath>$(GameDir)\BepInEx\core\0Harmony.dll</HintPath>
         </Reference>
-        <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-            <SpecificVersion>False</SpecificVersion>
+        <Reference Include="Assembly-CSharp">
             <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)Assembly-CSharp.dll</HintPath>
             <Private>False</Private>
         </Reference>
-        <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-            <SpecificVersion>False</SpecificVersion>
+        <Reference Include="Assembly-CSharp-firstpass">
             <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)Assembly-CSharp-firstpass.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-            <SpecificVersion>False</SpecificVersion>
-            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)NewtonSoft.Json.dll</HintPath>
             <Private>False</Private>
         </Reference>
         <Reference Include="QModInstaller">
@@ -80,14 +72,6 @@
             <HintPath>$(GameDir)\QMods\$(SMLHelperFolder)\SMLHelper.dll</HintPath>
             <Private>False</Private>
         </Reference>
-        <Reference Include="System" />
-        <Reference Include="System.Core" />
-        <Reference Include="System.Data" />
-        <Reference Include="System.Windows.Forms" />
-        <Reference Include="UnityEngine">
-            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
         <Reference Include="UnityEngine.CoreModule">
             <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.CoreModule.dll</HintPath>
             <Private>False</Private>
@@ -96,38 +80,8 @@
             <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.InputLegacyModule.dll</HintPath>
             <Private>False</Private>
         </Reference>
-        <Reference Include="UnityEngine.Physics2DModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-            <SpecificVersion>False</SpecificVersion>
-            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.Physics2DModule.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-            <SpecificVersion>False</SpecificVersion>
-            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.PhysicsModule.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="UnityEngine.TextCoreModule">
-            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.TextCoreModule.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="UnityEngine.TextRenderingModule">
-            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.TextRenderingModule.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
         <Reference Include="UnityEngine.UI">
             <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.UI.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UIElementsModule">
-            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.UIElementsModule.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UIModule">
-            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.UIModule.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="Unity.TextMeshPro" Condition="$(Configuration.Contains('BZ'))">
-            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)Unity.TextMeshPro.dll</HintPath>
             <Private>False</Private>
         </Reference>
     </ItemGroup>

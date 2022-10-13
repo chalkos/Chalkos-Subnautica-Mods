@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using HarmonyLib;
+﻿using HarmonyLib;
 using SMLHelper.V2.Handlers;
 using UnityEngine;
-using UWE;
-using Logger = QModManager.Utility.Logger;
 
 namespace HabitatShrinker.Patches
 {
