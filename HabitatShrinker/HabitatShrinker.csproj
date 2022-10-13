@@ -84,6 +84,10 @@
             <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.UI.dll</HintPath>
             <Private>False</Private>
         </Reference>
+        <Reference Include="Unity.TextMeshPro" Condition="$(Configuration.Contains('BZ'))">
+            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)Unity.TextMeshPro.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
     </ItemGroup>
 
 </Project>

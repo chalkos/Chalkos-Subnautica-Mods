@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using HarmonyLib;
 using UnityEngine;
+using Logger = QModManager.Utility.Logger;
 
 namespace HabitatShrinker.Patches
 {
@@ -20,28 +21,27 @@ namespace HabitatShrinker.Patches
                 if (!CraftData.GetBuilderIndex(techType, out _, out category, out _))
                     category = TechCategory.Misc;
                 _techTypeCategoryCache[techType] = category;
+                //Logger.Log(Logger.Level.Info, $"Found techtype: {techType}", null, true);
             }
 
             switch (category)
             {
                 case TechCategory.InteriorPiece:
                 case TechCategory.BasePiece:
+#if SN1
+                case TechCategory.BaseRoom:
+                case TechCategory.BaseWall:
+#endif
                     return Main.Config.SafetyOverride;
                 default:
                     return true;
             }
         }
 
-        private static TechType GetLastTechType =>
-#if SN1
-            Builder.constructableTechType;
-#elif BZ
-            Builder.lastTechType;
-#endif
-
         public static void Prefix()
         {
-            if (Builder.prefab == null || !ShouldScaleTechType(GetLastTechType)) return;
+            if (Builder.prefab == null ||
+                !ShouldScaleTechType(Builder.prefab.GetComponent<Constructable>().techType)) return;
 
             var scale = Main.Enabled ? Main.ScaleVector : Vector3.one;
 
