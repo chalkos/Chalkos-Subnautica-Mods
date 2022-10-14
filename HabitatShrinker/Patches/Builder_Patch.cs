@@ -11,8 +11,7 @@ namespace HabitatShrinker.Patches;
 [HarmonyPatch(typeof(Builder), nameof(Builder.Update))]
 internal class Builder_Update_Patch
 {
-    private static readonly Dictionary<TechType, TechCategory> _techTypeCategoryCache =
-        new Dictionary<TechType, TechCategory>();
+    private static readonly Dictionary<TechType, TechCategory> _techTypeCategoryCache = new();
 
     private static bool ShouldScaleTechType(TechType techType)
     {
@@ -48,7 +47,7 @@ internal class Builder_Update_Patch
         if (Builder.prefab.transform.localScale != scale)
         {
             Builder.prefab.transform.localScale = scale;
-            Object.Destroy((Object)Builder.ghostModel);
+            Object.Destroy(Builder.ghostModel);
             Builder.Update();
         }
     }

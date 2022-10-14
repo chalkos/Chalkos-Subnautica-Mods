@@ -23,7 +23,7 @@ public class Player_Update_Patch
     {
         PlayerTool heldTool = Inventory.main.GetHeldTool();
         Vehicle vehicle = __instance.GetVehicle();
-        Pickupable module = vehicle?.GetSlotItem(vehicle.GetActiveSlotID())?.item;
+        Pickupable module = vehicle != null ? vehicle.GetSlotItem(vehicle.GetActiveSlotID())?.item : null;
 
         bool builderCheck = heldTool != null && heldTool.pickupable.GetTechType() == TechType.Builder;
         bool builderModuleCheck = TechTypeHandler.TryGetModdedTechType("BuilderModule", out TechType modTechType) &&
