@@ -18,7 +18,7 @@ Otherwise just download the latest zip for each plugin.
 
 Fixes the bug that causes you to be pushed out of the cyclops (and sea truck).
 
-Note: growing plants' interaction/collision volume has been made constant in order to fix the bug (in vanilla they grow over time). When they grown, plants will have their vanilla full interact/collision size.
+Note: growing plants' interaction/collision volume has been made constant in order to fix the bug (in vanilla they grow over time). When they grow, plants will have their vanilla interact/collision size.
 
 [Download for Subnautica](https://github.com/chalkos/Chalkos-Subnautica-Mods/releases/download/1/CyclopsDriftFix_SN1_v1.0.0.zip)
 |
