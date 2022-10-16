@@ -85,20 +85,20 @@
         <Reference Include="0Harmony">
             <HintPath>$(GameDir)\BepInEx\core\0Harmony.dll</HintPath>
         </Reference>
-        <Reference Include="Assembly-CSharp">
-            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)Assembly-CSharp.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="Assembly-CSharp-firstpass">
-            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)Assembly-CSharp-firstpass.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
         <Reference Include="QModInstaller">
             <HintPath>$(GameDir)\BepInEx\plugins\QModManager\QModInstaller.dll</HintPath>
             <Private>False</Private>
         </Reference>
         <Reference Include="SMLHelper">
             <HintPath>$(GameDir)\QMods\$(SMLHelperFolder)\SMLHelper.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="Assembly-CSharp">
+            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)Assembly-CSharp.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="Assembly-CSharp-firstpass">
+            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)Assembly-CSharp-firstpass.dll</HintPath>
             <Private>False</Private>
         </Reference>
         <Reference Include="UnityEngine.CoreModule">
@@ -109,12 +109,16 @@
             <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.InputLegacyModule.dll</HintPath>
             <Private>False</Private>
         </Reference>
+        <Reference Include="UnityEngine.PhysicsModule">
+            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.PhysicsModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
         <Reference Include="UnityEngine.UI">
             <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.UI.dll</HintPath>
             <Private>False</Private>
         </Reference>
-        <Reference Include="Unity.TextMeshPro" Condition="$(Configuration.Contains('BZ'))">
-            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)Unity.TextMeshPro.dll</HintPath>
+        <Reference Include="UnityEngine.UIModule">
+            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.UIModule.dll</HintPath>
             <Private>False</Private>
         </Reference>
     </ItemGroup>

@@ -1,0 +1,13 @@
+{
+  "Game": "Subnautica",
+  "Id": "CyclopsDriftFix",
+  "DisplayName": "Cyclops Drift Fix",
+  "Author": "Chalkos",
+  "Version": "1.0.0",
+  "Dependencies": [ "SMLHelper" ],
+  "Enable": true,
+  "AssemblyName": "CyclopsDriftFix.dll",
+  "VersionChecker": {
+    "LatestVersionURL": "https://raw.githubusercontent.com/chalkos/Chalkos-Subnautica-Mods/main/CyclopsDriftFix/mod_SN1.json"
+  }
+}
