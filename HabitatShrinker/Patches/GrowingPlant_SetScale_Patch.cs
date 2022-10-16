@@ -62,8 +62,8 @@ internal class GrowingPlant_SetScale_Patch
 
     public static void AdjustGrownPlantScale(GrowingPlant instance, Transform tr, float progress)
     {
-        // while growing, the scale is fine as it it 
-        if (progress != 1f)
+        // while growing, the scale is fine as is
+        if (progress < instance.maxProgress)
             return;
 
         // when loading a save, all grown plants pass through here without having a planter,
