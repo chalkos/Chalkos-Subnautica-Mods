@@ -11,6 +11,8 @@ namespace HabitatShrinker.Patches;
 [HarmonyPatch(typeof(Builder), nameof(Builder.Update))]
 internal class Builder_Update_Patch
 {
+    private static Vector3 _lastScale;
+    private static TechType _lastTechType;
     private static readonly Dictionary<TechType, TechCategory> _techTypeCategoryCache = new();
 
     private static bool ShouldScaleTechType(TechType techType)
@@ -42,7 +44,14 @@ internal class Builder_Update_Patch
         if (Builder.prefab == null ||
             !ShouldScaleTechType(Builder.prefab.GetComponent<Constructable>().techType)) return;
 
-        var scale = Main.Enabled ? Main.ScaleVector : Vector3.one;
+        var techType = Builder.prefab.GetComponent<Constructable>().techType;
+        if (_lastTechType != techType)
+        {
+            _lastTechType = techType;
+            _lastScale = Builder.prefab.transform.localScale;
+        }
+        
+        var scale = Main.Enabled ? Main.ScaleVector : _lastScale;
 
         if (Builder.prefab.transform.localScale != scale)
         {

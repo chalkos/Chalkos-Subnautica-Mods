@@ -61,10 +61,11 @@ The safety override allows you to resize **UNSUPPORTED** modules, like the exter
 
 ### Known issues
 
-- you'll only be able to place a resized module where you would normally be able to place the non-resized version (collision is not resized)
+- **[wontfix, for now]** you'll only be able to place a resized module where you would normally be able to place the non-resized version (collision is not resized)
   - this is because the boundaries for the resized module are not resized. The game does not take scale into consideration at all when calculating those
   - fix: use BuildingTweaks' full override feature and you'll be able to place things wherever you want
   - collision after building the object works fine
+- **[to fix]** plants have a maxHeight, so scaling them bigger than that will result in them getting shrunk to the maxHeight when they mature
 
 ---------------------------------------------------
 

@@ -1,9 +1,11 @@
-﻿using System.Numerics;
+﻿using System.Collections;
+using System.Numerics;
 using UnityEngine;
 using System.Reflection;
 using HarmonyLib;
 using QModManager.API.ModLoading;
 using SMLHelper.V2.Handlers;
+using UWE;
 using Logger = QModManager.Utility.Logger;
 
 namespace CyclopsDriftFix;

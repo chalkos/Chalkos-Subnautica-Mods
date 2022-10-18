@@ -4,7 +4,7 @@
   "DisplayName": "Cyclops Drift Fix",
   "Author": "Chalkos",
   "Version": "1.0.0",
-  "Dependencies": [ "SMLHelper" ],
+  "Dependencies": [ "SMLHelper", "BuildInSeatruck" ],
   "Enable": true,
   "AssemblyName": "CyclopsDriftFix.dll",
   "VersionChecker": {

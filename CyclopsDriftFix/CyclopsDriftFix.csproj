@@ -4,6 +4,9 @@
         <Version>1.0.0</Version>
         <Title>Cyclops Drift Fix</Title>
     </PropertyGroup>
+    <ItemGroup>
+      <Reference Include="System.Windows.Forms" />
+    </ItemGroup>
 
     <Import Project="$(SolutionDir)\Common.targets" />
 </Project>

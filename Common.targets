@@ -113,6 +113,16 @@
             <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.PhysicsModule.dll</HintPath>
             <Private>False</Private>
         </Reference>
+        <Reference Include="UnityEngine.ProfilerModule">
+            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.ProfilerModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+
+        
+        <Reference Include="UnityEngine.TextRenderingModule">
+            <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.TextRenderingModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
         <Reference Include="UnityEngine.UI">
             <HintPath>$(GameDir)\$(DataFolder)\Managed\$(PublicizedFolder)UnityEngine.UI.dll</HintPath>
             <Private>False</Private>
