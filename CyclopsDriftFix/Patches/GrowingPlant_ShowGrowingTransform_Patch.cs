@@ -2,45 +2,26 @@
 using System.Linq;
 using CyclopsDriftFix.GameObjects;
 using HarmonyLib;
-//using HarmonyLib;
 using UnityEngine;
 using UWE;
 using Logger = QModManager.Utility.Logger;
 
 namespace CyclopsDriftFix.Patches;
 
-[HarmonyPatch(typeof(GrowingPlant))]
-public class GrowingPlant_Patches
+[HarmonyPatch(typeof(GrowingPlant), nameof(GrowingPlant.OnEnable))]
+public class GrowingPlant_Enable_Patch
 {
-    [HarmonyPatch(nameof(GrowingPlant.OnEnable))]
-    [HarmonyPrefix]
-    static void GrowingPlant_OnEnable_Prefix(GrowingPlant __instance)
+    static void Prefix(GrowingPlant __instance)
     {
-        
-        
-        // var collisions = __instance.gameObject.EnsureComponent<GrowingPlantsCollision>();
-        //
-        // __instance.growingTransform.GetComponentsInChildren<Collider>()
-        //     .ForEach(collider => collisions.YoinkCollider(collider));
-        //
-        // collisions.Enable();
-    }
+        Logger.Log(Logger.Level.Fatal, "prefix run");
+        __instance//.gameObject.EnsureComponent<ColliderPatcher>();
+        .gameObject.GetComponentsInChildren<Collider>()
+        .ForEach(collider =>
+        {
+            var rb = collider.gameObject.EnsureComponent<Rigidbody>();
+            rb.isKinematic = true;
 
-    //[HarmonyPatch(nameof(GrowingPlant.OnDisable))]
-    //[HarmonyPostfix]
-    static void GrowingPlant_OnDisable_Postfix(GrowingPlant __instance)
-    {
-        if (__instance.gameObject.GetComponent<GrowingPlantsCollision>() is { } collisions)
-            collisions.Disable();
-    }
-
-    //[HarmonyPatch(nameof(GrowingPlant.SetScale))]
-    //[HarmonyPrefix]
-    static void GrowingPlant_SetScale_Prefix(GrowingPlant __instance, Transform tr, ref float progress)
-    {
-        if (progress >= 1f && __instance.gameObject.GetComponent<GrowingPlantsCollision>() is { } collisions)
-            collisions.Disable();
-
-        progress = progress > Main.Config.VisualStartScale ? progress : Main.Config.VisualStartScale;
+            collider.gameObject.EnsureComponent<CollisionIgnorer>();
+        });
     }
 }

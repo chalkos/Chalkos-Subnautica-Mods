@@ -5,10 +5,10 @@ using Logger = QModManager.Utility.Logger;
 
 namespace CyclopsDriftFix.Patches;
 
-[HarmonyPatch(typeof(Player),nameof(Player.Start))]
+//[HarmonyPatch(typeof(Player),nameof(Player.Start))]
 public class TooEasyPatch
 {
-    [HarmonyPostfix]
+    //[HarmonyPostfix]
     static void Postfix(GrowingPlant __instance)
     {
         // Physics.IgnoreCollision()

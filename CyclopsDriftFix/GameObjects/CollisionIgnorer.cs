@@ -18,7 +18,7 @@ public class CollisionIgnorer : MonoBehaviour
         
         //_colliders.ForEach(collider => Debug.Log($"ColliderPatcher: monitoring our collider {collider.GetInstanceID():X}"));
     }
-    
+
     public void OnCollisionEnter(Collision collision)
     {
         var collider = collision.collider;

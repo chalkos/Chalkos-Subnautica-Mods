@@ -10,7 +10,7 @@ public class Debug_Camera_FireOnPreRender_Patch
 {
     static void Postfix(Camera __instance)
     {
-        if(Control.IsKeyLocked(Keys.CapsLock))
+        if(Input.GetKey(KeyCode.CapsLock))
             GL.wireframe = true;
     }
 }
