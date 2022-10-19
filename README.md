@@ -41,9 +41,9 @@ Optional configuration:
 
 Modify the size of modules when building them with your Habitat Builder. You'll be able to change each size component (height/width/depth) individually, making them as thin/short/wide/tall as you want. Also supports module enlargement. And the size of plants you grow in resized growbeds or plant pots will match the growbed/pot size.
 
-[Download for Subnautica](https://github.com/chalkos/Chalkos-Subnautica-Mods/releases/download/1/HabitatShrinker_SN1_v1.0.0.zip)
+[Download for Subnautica](https://github.com/chalkos/Chalkos-Subnautica-Mods/releases/download/1/HabitatShrinker_SN1_v1.0.1.zip)
 |
-[Download for Below Zero](https://github.com/chalkos/Chalkos-Subnautica-Mods/releases/download/1/HabitatShrinker_BZ_v1.0.0.zip)
+[Download for Below Zero](https://github.com/chalkos/Chalkos-Subnautica-Mods/releases/download/1/HabitatShrinker_BZ_v1.0.1.zip)
 
 ### Usage
 
@@ -61,10 +61,18 @@ The safety override allows you to resize **UNSUPPORTED** modules, like the exter
 
 ### Known issues
 
-- you'll only be able to place a resized module where you would normally be able to place the non-resized version (collision is not resized)
+- **[wontfix, for now]** you'll only be able to place a resized module where you would normally be able to place the non-resized version (collision is not resized)
   - this is because the boundaries for the resized module are not resized. The game does not take scale into consideration at all when calculating those
   - fix: use BuildingTweaks' full override feature and you'll be able to place things wherever you want
   - collision after building the object works fine
+- **[to fix]** plants have a maxHeight, so scaling them bigger than that will result in them getting shrunk to the maxHeight when they mature
+
+### Changelog
+
+- v1.0.1
+  - bugfix: toggling off resizing will now restore the original (prefab) scale instead of scaling it to 100% 
+- v1.0.0
+  - initial
 
 ---------------------------------------------------
 
