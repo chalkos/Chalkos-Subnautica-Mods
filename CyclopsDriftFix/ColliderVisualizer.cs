@@ -1,5 +1,8 @@
 ﻿using System;
+
+#if BZ
 using TMPro;
+#endif
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +14,11 @@ namespace CyclopsDriftFix
         private static readonly Color Color = new Color32(255, 0, 0, 200);
 
         private GameObject _visualizer;
+#if SN1
+        private Text _label;
+#elif BZ
         private TextMeshProUGUI _label;
+#endif
         private static GameObject _colliderVisualizerCanvas;
 
         private static GameObject ColliderVisualizerCanvas
@@ -156,11 +163,16 @@ namespace CyclopsDriftFix
         {
             var label = new GameObject("Label");
             label.transform.SetParent(ColliderVisualizerCanvas.transform, worldPositionStays: false);
-
+#if SN1
+            _label = label.AddComponent<Text>();
+            _label.font = HandReticle.main.useSecondaryText.font;
+            _label.alignment = TextAnchor.MiddleCenter;
+#elif BZ
             _label = label.AddComponent<TextMeshProUGUI>();
             _label.font = HandReticle.main.compTextUseSubscript.font;
-            _label.fontSize = fontSize;
             _label.alignment = TextAlignmentOptions.Center;
+#endif
+            _label.fontSize = fontSize;
             _label.raycastTarget = false;
             _label.text = message;
 
