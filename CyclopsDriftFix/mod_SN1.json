@@ -3,7 +3,7 @@
   "Id": "CyclopsDriftFix",
   "DisplayName": "Cyclops Drift Fix",
   "Author": "Chalkos",
-  "Version": "1.0.0",
+  "Version": "1.0.1",
   "Dependencies": [ "SMLHelper" ],
   "Enable": true,
   "AssemblyName": "CyclopsDriftFix.dll",

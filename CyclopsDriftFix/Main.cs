@@ -9,8 +9,6 @@ namespace CyclopsDriftFix;
 [QModCore]
 public static class Main
 {
-    internal static Config Config { get; } = OptionsPanelHandler.Main.RegisterModOptions<Config>();
-
     [QModPatch]
     public static void Patch()
     {

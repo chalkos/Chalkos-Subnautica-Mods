@@ -18,24 +18,25 @@ Otherwise just download the latest zip for each plugin.
 
 Fixes the bug that causes you to be pushed out of the cyclops (and sea truck).
 
-Note: growing plants' interaction/collision volume has been made constant in order to fix the bug (in vanilla they grow over time). When they grow, plants will have their vanilla interact/collision size.
-
-[Download for Subnautica](https://github.com/chalkos/Chalkos-Subnautica-Mods/releases/download/1/CyclopsDriftFix_SN1_v1.0.0.zip)
+[Download for Subnautica](https://github.com/chalkos/Chalkos-Subnautica-Mods/releases/download/1/CyclopsDriftFix_SN1_v1.0.1.zip)
 |
-[Download for Below Zero](https://github.com/chalkos/Chalkos-Subnautica-Mods/releases/download/1/CyclopsDriftFix_BZ_v1.0.0.zip)
+[Download for Below Zero](https://github.com/chalkos/Chalkos-Subnautica-Mods/releases/download/1/CyclopsDriftFix_BZ_v1.0.1.zip)
 
 ### Usage
 
-Optional configuration:
-* **InteractScale** `percentage as a float between 0 and 1, default: 0.8` - Growing plants will be fixed at this size % for interaction purposes. In other words, you'll be able to interact with growing plants as if they were at this percentage of their growth
-  * examples: `0` will disable interacting with growing plants; `0.5` plants will be interactable as if they were at 50% growth; `1` plants will be interactable as if they were fully grown
-* **VisualStartScale** `percentage as a float between 0 and 1, default: 0` - Growing plants will never be smaller (visually) than this, meaning they will visually start as if they were already this size and only visually start growing when they are actually bigger than this
-  * examples: `1` will make the plant (only the visuals) appear fully grown from the moment it is planted; `0` is the default vanilla behaviour; `0.5` plants below 50% growth will appear to be at 50%
+Install and forget the fear of being glitched out of the Cyclops.
 
 ### Known issues
 
-- if you don't have plants in your cyclops, this mod won't fix the bug for you
+- if you don't have plants in your cyclops, this mod is unlikely to fix the bug for you
   - if you want to try to help fix the bug you are experiencing, drop by the [Subnautica Modding Discord](https://discord.com/invite/UpWuWwq) and mention `@Chalkos` with more info about how the bug is happening for you
+
+### Changelog
+
+- v1.0.1
+  - more likely to actually work
+- v1.0.0
+  - initial
 
 ## Habitat Shrinker
 
