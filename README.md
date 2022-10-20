@@ -16,7 +16,8 @@ Otherwise just download the latest zip for each plugin.
 
 ## Cyclops Drift Fix
 
-Fixes the bug that causes you to be pushed out of the cyclops (and sea truck).
+Fixes the bug that causes you to be pushed out of the cyclops.
+Also fixes seatruck and/or segments starting to wobble or drift.
 
 [Download for Subnautica](https://github.com/chalkos/Chalkos-Subnautica-Mods/releases/download/1/CyclopsDriftFix_SN1_v1.0.1.zip)
 |
@@ -28,7 +29,7 @@ Install and forget the fear of being glitched out of the Cyclops.
 
 ### Known issues
 
-- if you don't have plants in your cyclops, this mod is unlikely to fix the bug for you
+- if you don't have plants in your cyclops/seatruck, this mod is unlikely to fix the bug for you
   - if you want to try to help fix the bug you are experiencing, drop by the [Subnautica Modding Discord](https://discord.com/invite/UpWuWwq) and mention `@Chalkos` with more info about how the bug is happening for you
 
 ### Changelog
